@@ -1,3 +1,5 @@
+//4.Is power of 10
+//Returns true if x is power of 10 else returns false
 import java.util.*;
 class Main
 {
