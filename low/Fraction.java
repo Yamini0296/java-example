@@ -1,3 +1,11 @@
+//
+//1. Add Fractions
+   // -Given two fractions passed as an array.
+   // -Return the fraction which is result of addition of the two fraction.
+    //-Fraction is represented as two elements array-numerator ,denominator.
+    //-Returned fraction should be in simplest form.
+//Solution
+//
 import java.util.*;
 class Main
 {
