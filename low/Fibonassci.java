@@ -1,3 +1,8 @@
+// Returns fibonacci number
+// returns 1 if all test pass otherwise 0
+           //Implement the following test caes.Add more test cases if possible.
+
+
 import java.util.*;
 class Main
 {
