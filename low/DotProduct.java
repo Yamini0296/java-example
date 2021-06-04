@@ -1,3 +1,8 @@
+//2.Dot product
+   //- Given two matrices [1 2],[3 5] passed as an array.
+   
+   //- Return the dot product of the two matrices.
+//solution
 import java.util.*;
 class Main
 {
