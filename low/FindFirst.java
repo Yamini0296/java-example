@@ -1,3 +1,11 @@
+//5.first Non Repeating
+// find the 1st character that doesn't repeat anywhere
+//Ex-in apple the 1st non repeating character is a.
+//Implement the following test caes.Add more test cases if possible.
+             //returns true if all the tests pass otherwise returns false
+
+//solution
+
 import java.util.*;
 class Main
 {
