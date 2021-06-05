@@ -62,7 +62,7 @@ class Main
             return;
         }
     }
-    public static void main(String[] arun)
+    public static void main(String[] args)
     {
         doTestPass();
     }
