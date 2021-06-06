@@ -14,6 +14,9 @@ public class Main {
 				catch(ArithmeticException e) {
 					System.out.println(e);
 						System.out.println("Arithmetic exception handling");
-					
+				}
+				catch(ArrayIndexOutOfBoundException e) {
+					System.out.println(e);
+					System.out.println(" ArrayIndexOutOfBoundException handling");
 				}
 	}
