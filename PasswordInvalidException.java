@@ -33,7 +33,7 @@ class PasswordInvalidException extends Exception
         }
         try
         {
-            if(countspe>0 && countup>0 && str.length()>16 && countnumeric==0)
+            if(countspe>0 && countup>0 && str.length()==16 && countnumeric==0)
             {
              throw new PasswordInvalidException("Password Changed Successfully");
             }
@@ -56,3 +56,4 @@ class PasswordInvalidException extends Exception
  }
     }
 }
+
