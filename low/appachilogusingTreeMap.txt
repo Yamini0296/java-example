@@ -1,0 +1,90 @@
+import java.util.*;
+public class Solution
+    {
+        public static String findTopIpaddress(String log[])
+        {
+            TreeMap<String,Integer> map=new TreeMap<String,Integer>();
+            int max=1;
+            for(String ip : log)
+            {
+                String actip= ip.split("-")[0];
+                if(map.containsKey(actip))
+                {
+                    map.put(actip,map.get(actip)+1);
+                }
+                else
+                {
+                    map.put(actip,1);
+                }
+                if(map.get(actip)>max)
+                {
+                    max=map.get(actip);
+                }
+            }
+            int c=0,r=0;
+            for (String p : map.keySet()) {
+            int values = map.get(p);
+            if(values==max)
+            {
+             c++; 
+            }
+            }
+            String s3[]=new String[c];
+            for (String p : map.keySet()) {
+            int values = map.get(p);
+            if(values==max)
+            {
+               s3[r++]=p;
+            }
+            }
+            String s2="";
+            if(c==1)
+            {
+                return(s3[0]);
+            }
+            else
+            {
+                for(int i=0;i<s3.length-1;i++)
+                {
+                    s2=s2+s3[i]+',';
+                }
+                s2=s2+s3[c-1];
+            }
+            
+            return(s2);
+        }
+                      public static void doTestsPass()
+                      {
+                          boolean testsPassed=true;
+                       String lines[]=new String[]{
+                         "10.0.0.1-frank[10/Dec/2000:12:34:56-0500]\"GET /a.gif HTTp/1.0\"100 134",
+                         "10.0.0.1-frank[10/Dec/2000:12:34:57-0500]\"GET /b.gif HTTp/1.0\"100 134",
+                         "10.0.0.2-nancy[10/Dec/2000:12:34:58-0500]\"GET /c.gif HTTp/1.0\"100 134"};
+                       String result=findTopIpaddress(lines);
+                       if(!result.equals("10.0.0.1")){
+                         testsPassed=false;
+                       }
+                       lines=new String[]
+                       {"10.0.0.1-frank[10/Dec/2000:12:34:56-0500]\"GET /a.gif HTTp/1.0\"100 134",
+                         "10.0.0.1-frank[10/Dec/2000:12:34:57-0500]\"GET /b.gif HTTp/1.0\"100 134",
+                         "10.0.0.2-nancy[10/Dec/2000:12:34:58-0500]\"GET /c.gif HTTp/1.0\"100 134",
+                         "10.0.0.2-nancy[10/Dec/2000:12:34:59-0500]\"GET /c.gif HTTp/1.0\"100 134",
+                         "10.0.0.3-logan[10/Dec/2000:12:34:59-0500]\"GET /d.gif HTTp/1.0\"100 134"};
+                       result=findTopIpaddress(lines);
+                if(!result.equals("10.0.0.1,10.0.0.2"))
+                                         {testsPassed=false;}
+                  if(testsPassed){System.out.println("Tests passed");
+                                                        }
+                                                        else
+                                                        {
+                                        System.out.println("Tests failed");
+                                        System.out.println(result);
+                                        
+                                                        }
+                            }
+                                                           
+    public static void main(String[] args) 
+    {
+       doTestsPass();
+    }
+   }
