@@ -1,58 +1,62 @@
-import java.util.Arrays;
- class Main {
-
-    public static int[] longestUniformSubstring(String input)
-    {
-        int length= input.length(); 
-int longestUnifromIndex = 0 ,longestSubStringLength = 1,count = 1;
-        char[] ch = input.toCharArray();
-        for(int i =0;i<length;i++) {
-            for(int j =i+1;j<length;j++){
-
-                if(ch[i] == ch[j]) {
-                    count = count + 1;
-
-                }
-
-                }
-            if(longestSubStringLength < count){
-               longestSubStringLength = count;
-                count = 1;
-                longestUnifromIndex = i;
-
-            } else {
-
-                count = 1;
-
-            }
-
-        }
-        System.out.println( longestUnifromIndex+ " " + longestSubStringLength);
-        return new int[]{longestUnifromIndex,longestSubStringLength};
-    }
-
-
-    public static void main(String[] args) {
-
-        boolean pass=true;
-
-            int[] result = longestUniformSubstring("100001111");
-            int[] result1 = longestUniformSubstring("aabbbbCdAA");
-	    int[] result2 = longestUniformSubstring("yaaamini");
-            pass=pass && (Arrays.equals(result, new int[]{0,5}));
-            pass=pass && (Arrays.equals(result1,new int[]{2,4}));
-	    pass=pass && (Arrays.equals(result2,new int[]{1,3}));
-
-
-        if(pass)
+import java.util.*;
+public class Main
+{
+   public static int[] longestUniformSubstring(String s)
+   {
+       int a[]=new int[2];
+        int i=0,j=0,start=0;
+        int max=0;
+        while(i<s.length())
         {
-            System.out.println("all tests pass");
-
+            if(s.charAt(i)!=s.charAt(j))
+            {
+                if(i-j>max)
+                {
+                    max=i-j;
+                    start=j;
+                }
+                j=i;
+                i++;
+            }
+            i++;
+        }
+        if(i-j>max)
+        {
+            max=i-j;
+            start=j;
+        }
+        if(s.length()==0)
+        {
+           a[0]=-1;
+           a[1]=max;
         }
         else
         {
-            System.out.println("there is a test failure");
+            a[0]=start;
+            a[1]=max;
         }
-    }
-
+        return(a);
+             
+  }
+ public static void main(String[] args) 
+ {
+          Map<String,Integer[]> testCases=new HashMap<String,Integer[]>(); 
+           testCases.put("",new Integer[] {-1,0});
+           testCases.put("10000111",new Integer[] {1,4});
+           testCases.put("aabbbbCdAA",new Integer[] {2,4});
+           boolean pass=true;
+           for(Map.Entry<String,int[]> testCase :testCases.entrySet())
+            {
+                int[] result=longestUniformSubstring(testCase.getKey());
+                pass=pass && (Arrays.equals(result,testCase.getValue()));
+            }
+            if(pass)
+            {
+              System.out.println("all tests pass");
+            }
+            else
+            {
+              System.out.println("there is a test failure");
+            }
+  }
 }
