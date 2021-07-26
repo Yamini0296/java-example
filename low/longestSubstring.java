@@ -4,36 +4,36 @@ public class Main
    public static int[] longestUniformSubstring(String s)
    {
        int a[]=new int[2];
-        int i=0,j=0,start=0;
-        int max=0;
+        int i=0,j=0,index=0;
+        int count=0;
         while(i<s.length())
         {
             if(s.charAt(i)!=s.charAt(j))
             {
-                if(i-j>max)
+                if(i-j>count)
                 {
-                    max=i-j;
-                    start=j;
+                    count=i-j;
+                    index=j;
                 }
                 j=i;
                 i++;
             }
             i++;
         }
-        if(i-j>max)
+        if(i-j>count)
         {
-            max=i-j;
-            start=j;
+            count=i-j;
+            index=j;
         }
         if(s.length()==0)
         {
            a[0]=-1;
-           a[1]=max;
+           a[1]=count;
         }
         else
         {
-            a[0]=start;
-            a[1]=max;
+            a[0]=index;
+            a[1]=count;
         }
         return(a);
              
