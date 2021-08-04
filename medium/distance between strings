@@ -16,7 +16,7 @@ public class DistanceBetweenString {
 // count is for to count spaces
         count = index2 - index1;
         for(int i=index1+1; i<index2;i++ ) {
-             Char[] ch = strArray[i].toCharArray();
+             char[] ch = strArray[i].toCharArray();
             count = count + ch.length;
         }
         char[] arr1 = strArray[index1].toCharArray();
