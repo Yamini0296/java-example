@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Distance {
+
+
+public static void main(String[] args) {
+    String document="This is a sample document we just made up";
+    shortestDistance(document,"This","a");
+}
+public static double  shortestDistance(String input,String first,String second)
+{  
+    int firstlen=first.length();
+    int secondlen=second.length();
+    ArrayList<String> list=new ArrayList<>();
+    String[] arr=input.split(" ");
+    list.addAll(Arrays.asList(arr));
+    int firstIndex= list.indexOf(first);
+    int secondIndex=list.indexOf(second);
+    int space=secondIndex-firstIndex;
+   int mid=0;
+   if(space>1)
+      for(int i=firstIndex+1;i<secondIndex;i++)
+   {
+      char[] ch = arr[i].toCharArray();
+      mid+=ch.length;
+      
+   }
+    if(firstIndex==-1 || secondIndex==-1)
+        return -1;
+ 
+    double sum=(firstlen/2)+(secondlen/2)+space+mid;
+ 
+    return sum;
+}
+}
